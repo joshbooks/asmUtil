@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "now in final script"
 i=0
 
 while read line
@@ -12,16 +12,18 @@ do
   disAsm="$(objdump -d ops | sed -n '/0:/,$p')"
 
   opCode=""
-  for dis in ${disAsm[@]}
+  for byte in ${disAsm[@]}
   do
-    if [[ $(echo "$dis" | egrep "^[a-z0-9]{2}$") ]]
+    if [[ $(echo "$byte" | egrep "^[a-f0-9]{2}$") ]]
     then
-      opCode="$opCode $dis"
+      opCode="$opCode $byte"
+      #PLACEHOLDER 1
     fi
-    #echo -e "$i: $line :\t\t $dis"
   done
 
   echo -e "$i: $line :\t\t $opCode"
+
+  #PLACEHOLDER 2
 
   i=$[$i+1]
 done

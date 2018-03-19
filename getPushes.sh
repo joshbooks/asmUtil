@@ -1,20 +1,9 @@
 #!/bin/bash
+source ./execWithOpcodes.sh
 
-echo -n > pushAsm.asm
+echo -n > opCodesToBePushed
+echo "now in test script"
 
-while read line
-do
-  echo "[bits 64]" > asm.asm
-  echo "section .text" >> asm.asm
-  echo "_start:" >> asm.asm
-  echo -e "\t$line" >> asm.asm
-  nasm -f elf64 asm.asm -o ops
-  opCode=`objdump -d ops | awk '/0:/ {print $2" "$3}'`
+execWithOpcode '  echo "$byte" >> opCodesToBePushed '
 
-
-  echo "$opCode" | awk '{print "push WORD 0x"$2$1}' >> pushAsm.asm
-done
-
-  #nasm -f elf64 pushAsm.asm -o pushOps
-  #objdump -d pushOps
-  cat pushAsm.asm
+tac opCodesToBePushed | paste -d ' ' - - | sed -e 's/\(..\) \(..\)/push WORD 0x\1\2/' -e 's/^\(..\) $/push BYTE 0x\1/' > pushAsm.asm
