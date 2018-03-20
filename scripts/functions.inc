@@ -29,10 +29,3 @@ function textOnlyNasmTemplate()
   echo "_start:" >> $1
 }
 
-#lovingly ripped off from https://stackoverflow.com/a/31798763/1981345
-function twos()
-{
-  x=$((16#$1))
-  [ "$x" -gt 127 ] && ((x=x-256))
-  echo "$x"
-}
