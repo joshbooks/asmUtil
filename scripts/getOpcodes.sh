@@ -1,12 +1,12 @@
 #!/bin/bash
-echo "now in final script"
+
+source scripts/functions.inc
+
 i=0
 
 while read line
 do
-  echo "[bits 64]" > asm.asm
-  echo "section .text" >> asm.asm
-  echo "_start:" >> asm.asm
+  textOnlyNasmTemplate asm.asm
   echo -e "\t$line" >> asm.asm
   nasm -f elf64 asm.asm -o ops
   disAsm="$(objdump -d ops | sed -n '/0:/,$p')"
