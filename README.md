@@ -16,7 +16,7 @@ This was really cool to make, but I'm not sure if it makes any sense to use this
 - `gadgets/pushExample.asm` inserts 4 into dil, the lowest byte of rdi, which is the register 
    used as the return code by the exit syscall. Clobbers dil, rsp, stack
    
- working example
+ ## working example
  ```
  ./scripts/getPushes.sh < gadgets/pushExample.asm
  cat gadgets/exit.asm >> pushAsm.asm
