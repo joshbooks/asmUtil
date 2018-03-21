@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# accepts up to two arguments, the format of both is a bash snippet
+# that will be substituted into getOpcodes in a position well placed
+# to take advantage of a populated variable, for the first argument 
+# the variable I had in mind was $byte, which will take the value of
+# each byte of each opcode generated from the assembly instructions
+# read from stdin
+# The variable I had in mind for the second bash snippet was $opCode
+# which will take the value of each opcode (in the form of space 
+# separated hexadecimal bytes) generated from the assembly instructions
+# read from stdin
 function execWithOpcode
 {
   echo > tempScript.sh
@@ -22,6 +32,8 @@ function execWithOpcode
   rm tempScript.sh
 }
 
+# make a file that contains the bare minimum to start turning
+# instructions into binary
 function textOnlyNasmTemplate()
 {
   echo "[bits 64]" > $1
