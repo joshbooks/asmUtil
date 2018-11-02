@@ -1,5 +1,13 @@
 # asmUtil
-This was really cool to make, but I'm not sure if it makes any sense to use this when [radare2](https://github.com/radare/radare2/) exists...
+This was really cool to make, but I'm not sure if it makes any sense to use this when [radare2](https://github.com/radare/radare2/) exists...  
+The idea of this project is to make it easier to do some cool assembly tricks, 
+the first one I wanted to attack was pushing opcodes onto the stack and then
+calling rsp to acheieve `eval`-like behavior. I also wanted to keep it pure bash 
+because it seeems like between nams, objdump, and standard bash utils we should
+have more than enough power to do anything in assembly that the most twisted mind 
+could ever dream of and every time you add a component you're introducing another
+things that downstream consumers have to manage and another thing that is 
+eventually going to break.
 
 ## scripts
 - `scripts/getOpcodes.sh` takes lines of x86-64 nasm assembly and converts them into opcodes, pipe in a file or use it as an interactive assembler.
