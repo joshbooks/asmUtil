@@ -8,7 +8,7 @@ have more than enough power to do anything in assembly that the most twisted min
 could ever dream of and every time you add a component you're introducing another
 things that downstream consumers have to manage and another thing that is 
 eventually going to break. I target x86_64 because it's what every dev environment
-I've touched in the last 5 years runs. I use nasm instead of GAS or TASM or MASM
+I've touched in the last 5 years runs. I use NASM instead of GAS or TASM or MASM
 because I like it more.
 
 ## scripts
